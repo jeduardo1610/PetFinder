@@ -100,6 +100,10 @@ enum Theme : Int{
     UISlider.appearance().setMinimumTrackImage(UIImage(named: "minimumTrack")?
       .withRenderingMode(.alwaysTemplate)
       .resizableImage(withCapInsets: UIEdgeInsets(top: 0, left : 6, bottom: 0, right : 0)), for: .normal)
+    
+    //UISwitch Config
+    UISwitch.appearance().onTintColor = mainColor.withAlphaComponent(0.4)
+    UISwitch.appearance().thumbTintColor = mainColor
 
   }
   
