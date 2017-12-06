@@ -48,6 +48,24 @@ enum Theme : Int{
     return self == .graphical ? UIImage(named: "tabBarBackground"):nil
   }
   
+  var backgroundCellColor : UIColor {
+    switch self {
+    case .default, .graphical:
+      return UIColor.white
+    case .dark:
+      return UIColor(white: 0.4, alpha: 1.0)
+    }
+  }
+  
+  var textCellColor : UIColor {
+    switch self {
+    case .default, .graphical:
+      return UIColor.black
+    case .dark:
+      return UIColor.white
+    }
+  }
+  
   func apply() {
     
     //General Config
@@ -104,6 +122,10 @@ enum Theme : Int{
     //UISwitch Config
     UISwitch.appearance().onTintColor = mainColor.withAlphaComponent(0.4)
     UISwitch.appearance().thumbTintColor = mainColor
+    
+    //UITableViewCell Config
+    UITableViewCell.appearance().backgroundColor = backgroundCellColor
+    UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = textCellColor
 
   }
   
