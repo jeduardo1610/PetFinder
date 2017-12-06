@@ -70,6 +70,21 @@ enum Theme : Int{
     let tabResizableIndicator = tabIndicator?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 2.0, bottom: 0, right: 0))
     UITabBar.appearance().selectionIndicatorImage = tabResizableIndicator
     
+    //UISegmentedControl Config
+    let controlBackground = UIImage(named: "controlBackground")?
+      .withRenderingMode(.alwaysTemplate)
+      .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+    
+    let selectedControlBackground = UIImage(named: "controlSelectedBackground")?
+      .withRenderingMode(.alwaysTemplate)
+      .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+    
+    UISegmentedControl.appearance()
+      .setBackgroundImage(controlBackground, for: .normal, barMetrics: .default)
+    
+    UISegmentedControl.appearance()
+     .setBackgroundImage(selectedControlBackground, for: .selected, barMetrics: .default)
+    
   }
   
 }
