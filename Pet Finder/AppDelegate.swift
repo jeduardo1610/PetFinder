@@ -26,11 +26,34 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  
+  private let solar = Solar(for: Date(), latitude: 19.3094, longitude: -99.1871)
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
-      Theme.current.apply()
+    initializeTheme()
+    
+    print("Sunset will be at: \(String(describing: solar?.sunset))")
     
     return true
   }
+  
+  func initializeTheme(){
+    if solar!.isDaytime {
+      Theme.current.apply()
+      scheduleThemeTimer()
+    }
+  }
+  
+  func scheduleThemeTimer(){
+    let timer = Timer(fire: solar!.sunset!, interval: 0, repeats: false) { [weak self] _ in
+      Theme.dark.apply()
+      self?.window?.subviews.forEach({ (view: UIView) in
+        view.removeFromSuperview()
+        self?.window?.addSubview(view)
+      })
+    }
+    RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+  }
+  
 }
