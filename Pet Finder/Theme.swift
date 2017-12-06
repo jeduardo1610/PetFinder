@@ -85,6 +85,14 @@ enum Theme : Int{
     UISegmentedControl.appearance()
      .setBackgroundImage(selectedControlBackground, for: .selected, barMetrics: .default)
     
+    //UIStepper +/- control
+    UIStepper.appearance().setBackgroundImage(controlBackground, for: .normal)
+    UIStepper.appearance().setBackgroundImage(controlBackground, for: .disabled)
+    UIStepper.appearance().setBackgroundImage(controlBackground, for: .highlighted)
+    
+    UIStepper.appearance().setDecrementImage(UIImage(named: "fewerPaws"), for: .normal)
+    UIStepper.appearance().setIncrementImage(UIImage(named: "morePaws"), for: .normal)
+
   }
   
 }
